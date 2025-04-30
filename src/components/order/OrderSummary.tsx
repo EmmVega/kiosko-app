@@ -1,5 +1,6 @@
 'use client'
 import { useStore } from '../../../lib/store'
+import ProductDetails from './ProductDetails';
 
 const OrderSummary = () => {
   const order = useStore((state) => state.order);
@@ -10,7 +11,12 @@ const OrderSummary = () => {
 
       {order.length === 0 ? <p className='text-center my-10'>Carro vacío</p> : (
         <div className='mt-5'>
-          <p>Si hay algo</p>
+          {order.map(item => (
+            <ProductDetails 
+              key={item.id}
+              item={item}
+            />
+          ))}
         </div>
       )}
     </aside>
