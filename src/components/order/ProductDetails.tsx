@@ -8,7 +8,7 @@ type ProductDetailsProps = {
 }
 
 const ProductDetails = ({item}: ProductDetailsProps) => {
-    const { increaseQuantity, decreaseQuantity } = useStore();
+    const { increaseQuantity, decreaseQuantity, removeItem } = useStore();
 
   return (
     <div className="shadow space-y-1 p-4 bg-white  border-t border-gray-200 ">
@@ -18,7 +18,7 @@ const ProductDetails = ({item}: ProductDetailsProps) => {
   
           <button
             type="button"
-            onClick={() => {}}
+            onClick={() => removeItem(item.id)}
           >
             <XCircleIcon className="text-red-600 h-8 w-8"/>
           </button>
