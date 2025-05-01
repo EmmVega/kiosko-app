@@ -8,7 +8,7 @@ import { OrderSchema } from '../../../schema';
 import { toast } from 'react-toastify';
 
 const OrderSummary = () => {
-  const order = useStore((state) => state.order);
+  const {order, clearOrder} = useStore((state) => state);
   const total = useMemo(() => order.reduce((total, item) => total + (item.quantity * item.price), 0),[order])
 
   const handleCreateOrder = async (formData: FormData) => {
@@ -30,7 +30,11 @@ const OrderSummary = () => {
       response.errors.forEach(err => {
         toast.error(err.message)
       })
+    } else {
+      toast.success('Pedido realizado correctamente')
+      clearOrder();
     }
+    
   }
   return (
     <aside className='lg:h-screen lg:overflow-y-scroll md:w-64 lg:w-96 p-5'>
