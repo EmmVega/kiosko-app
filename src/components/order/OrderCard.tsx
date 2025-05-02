@@ -1,3 +1,4 @@
+import { completeOrderAction } from "../../../actions/complete-order-action";
 import { OrderWithProducts } from "../../../lib/types"
 import { formatCurrency } from "../../../lib/utils";
 
@@ -5,7 +6,7 @@ type OrderCardProps = {
     order: OrderWithProducts
 }
 export default function OrderCard({ order }: OrderCardProps) {
-console.log(order);
+
     return (
         <section
             aria-labelledby="summary-heading"
@@ -31,7 +32,14 @@ console.log(order);
                 </div>
             </dl>
 
-            <form>
+            <form
+                action={completeOrderAction}
+            >
+                <input 
+                    type="hidden"
+                    value={order.id}
+                    name="order_id"
+                />
                 <input
                     type="submit"
                     className="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold cursor-pointer"
