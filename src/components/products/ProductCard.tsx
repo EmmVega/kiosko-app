@@ -16,10 +16,10 @@ const ProductCard = ({product}: ProductCardProps) => {
             height={500}
             alt={`Imagen platillo ${product.name}`}
         />
-        <div className="p-5">
-            <h3 className="text-2xl font-bold">{product.name}</h3>
+        <div className="p-5 min-h-70 grid content-around">
+            <h3 className="text-2xl font-bold font-stretch-80%">{product.name}</h3>
             <p className="mt-5 font-black text-4xl text-amber-500">{formatCurrency(product.price)}</p>
-           <AddToProductButton product={product}/>
+            <AddToProductButton product={product}/>
         </div>
     </div>
   )
